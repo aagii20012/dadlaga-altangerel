@@ -1,6 +1,6 @@
 package main;
 
-
+import calculator.CalculatorUI;
 import problem.*;
 
 import java.awt.EventQueue;
@@ -65,8 +65,7 @@ public class main {
 		btnProblem1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem1 toQuest=new Problem1();
-				toQuest.main(null);
+				Problem1.main(null);
 			}
 		});
 		
@@ -74,8 +73,7 @@ public class main {
 		btnProblem2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem2 toQuest=new Problem2();
-				toQuest.main(null);
+				Problem2.main(null);
 			}
 		});
 		
@@ -83,8 +81,7 @@ public class main {
 		btnProblem3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem3 toQuest=new Problem3();
-				toQuest.main(null);
+				Problem3.main(null);
 			}
 		});
 		
@@ -92,16 +89,15 @@ public class main {
 		btnProblem4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem4 toQuest=new Problem4();
-				toQuest.main(null);
+				Problem4.main(null);
 			}
 		});
 		
 		JButton btnProblem5 = new JButton("problem 5");
 		btnProblem5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Problem5 toQuest=new Problem5();
-				toQuest.main(null);
+				frame.dispose();
+				Problem5.main(null);
 			}
 		});
 		
@@ -109,8 +105,7 @@ public class main {
 		btnProblem6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem6 toQuest=new Problem6();
-				toQuest.main(null);
+				Problem6.main(null);
 			}
 		});
 		
@@ -118,8 +113,7 @@ public class main {
 		btnProblem7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem7 toQuest=new Problem7();
-				toQuest.main(null);
+				Problem7.main(null);
 			}
 		});
 		
@@ -127,8 +121,7 @@ public class main {
 		btnProblem8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem8 toQuest=new Problem8();
-				toQuest.main(null);
+				Problem8.main(null);
 			}
 		});
 		
@@ -136,8 +129,7 @@ public class main {
 		btnProblem9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem9 toQuest=new Problem9();
-				toQuest.main(null);
+				Problem9.main(null);
 			}
 		});
 		
@@ -145,8 +137,7 @@ public class main {
 		btnProblem10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem10 toQuest=new Problem10();
-				toQuest.main(null);
+				Problem10.main(null);
 			}
 		});
 		
@@ -154,8 +145,7 @@ public class main {
 		btnProblem11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem11 toQuest=new Problem11();
-				toQuest.main(null);
+				Problem11.main(null);
 			}
 		});
 		
@@ -163,8 +153,7 @@ public class main {
 		btnProblem12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem12 toQuest=new Problem12();
-				toQuest.main(null);
+				Problem12.main(null);
 			}
 		});
 		
@@ -172,8 +161,7 @@ public class main {
 		btnProblem17.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem17 toQuest=new Problem17();
-				toQuest.main(null);
+				Problem17.main(null);
 			}
 		});
 		
@@ -181,8 +169,7 @@ public class main {
 		btnProblem18.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem18 toQuest=new Problem18();
-				toQuest.main(null);
+				Problem18.main(null);
 			}
 		});
 		
@@ -190,8 +177,7 @@ public class main {
 		btnProblem19.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem19 toQuest=new Problem19();
-				toQuest.main(null);
+				Problem19.main(null);
 			}
 		});
 		
@@ -199,8 +185,7 @@ public class main {
 		btnProblem20.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem20 toQuest=new Problem20();
-				toQuest.main(null);
+				Problem20.main(null);
 			}
 		});
 		
@@ -208,8 +193,7 @@ public class main {
 		btnProblem13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem13 toQuest=new Problem13();
-				toQuest.main(null);
+				Problem13.main(null);
 			}
 		});
 		
@@ -217,8 +201,7 @@ public class main {
 		btnProblem14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem14 toQuest=new Problem14();
-				toQuest.main(null);
+				Problem14.main(null);
 			}
 		});
 		
@@ -226,8 +209,7 @@ public class main {
 		btnProblem15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem15 toQuest=new Problem15();
-				toQuest.main(null);
+				Problem15.main(null);
 			}
 		});
 		
@@ -235,51 +217,61 @@ public class main {
 		btnProblem16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Problem16 toQuest=new Problem16();
-				toQuest.main(null);
+				Problem16.main(null);
 			}
 		});
 		
 		JLabel lblCalculator = new JLabel("Calculator");
+		
+		JButton btnCalculatorButton = new JButton("Calculator");
+		btnCalculatorButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				CalculatorUI.main(null);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(70)
 							.addComponent(lblProblemLbl, GroupLayout.PREFERRED_SIZE, 470, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(34)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnProblem1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(btnProblem17, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnProblem13, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnProblem9, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnProblem5, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-									.addComponent(lblCalculator, Alignment.LEADING)))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnProblem2, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-								.addComponent(btnProblem6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem10, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem14, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem18, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnProblem3, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-								.addComponent(btnProblem7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem11, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem15, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem19, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnProblem4, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-								.addComponent(btnProblem8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnProblem20, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnCalculatorButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnProblem1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnProblem17, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnProblem13, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnProblem9, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnProblem5, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblCalculator))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnProblem2, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+										.addComponent(btnProblem6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem10, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem14, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem18, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnProblem3, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+										.addComponent(btnProblem7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem11, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem15, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem19, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnProblem4, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+										.addComponent(btnProblem8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem16, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnProblem20, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+							.addGap(123)))
 					.addGap(0))
 		);
 		groupLayout.setVerticalGroup(
@@ -294,14 +286,13 @@ public class main {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(btnProblem1)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(btnProblem5)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnProblem9)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnProblem13)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnProblem17)))
+									.addComponent(btnProblem5)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnProblem9)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnProblem13)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnProblem17))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(btnProblem2)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -334,7 +325,9 @@ public class main {
 							.addComponent(btnProblem20)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblCalculator)
-					.addContainerGap(147, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnCalculatorButton, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(98, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

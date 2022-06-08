@@ -38,7 +38,7 @@ public class CalculatorUI {
 	public String currentInput = "";
 	public String preInput = "";
 	public String lastOperation = "";
-	public boolean clickedDot = false;
+	public boolean clickedEqual = false;
 	public Calculator calc = new Calculator();
 
 	/**
@@ -402,6 +402,7 @@ public class CalculatorUI {
 		else {
 			if(operation == "=")
 			{
+				String resultOfCalc = "";
 				if(isLastOpSingle()) {
 					singleValueCalc(lastOperation);
 					return;
@@ -411,14 +412,20 @@ public class CalculatorUI {
 				try {
 					left = Double.parseDouble(preInput);
 					rigth = Double.parseDouble(currentInput);
+					clickedEqual = true;
 				}
 				catch(Exception e) {
 					previesNumber.setText(currentInput + "=");
 					return;
 				}
 				result = calc.makeCalculationOnTwo(left, rigth, lastOperation);
-				currentInput = Double.toString(result);
+				if( result % 1 == 0 )
+					resultOfCalc += (int) result;
+				else
+					resultOfCalc += Double.toString(result);
+				currentInput = resultOfCalc;
 				currentNumber.setText(currentInput);
+				previesNumber.setText("");
 				return;
 			}
 			else if(operation == ".")
