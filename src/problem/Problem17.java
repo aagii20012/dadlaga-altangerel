@@ -83,7 +83,7 @@ public class Problem17 {
 				floor = (int) floorSpinner.getValue();
 				doorNumber = (int) doorNumberSpinner.getValue();
 				
-				isZero = checkIsZero(door, floor, doorNumber);
+				isZero = checkIsValid(door, floor, doorNumber);
 				
 				if(isZero)
 					return;
@@ -181,9 +181,9 @@ public class Problem17 {
 		return result;
 	}
 
-	public boolean checkIsZero(
+	public boolean checkIsValid(
 			int door, int floor, int doorNumber) {
-		
+		int limit = door * floor;
 		if ( door < 1 )
 		{
 			error("There must be more than 0 door");
@@ -199,10 +199,15 @@ public class Problem17 {
 			error("Door number must be greater than 0");
 			return true;
 		}
+		if( limit < doorNumber)
+		{
+			error("Door number must be lower than limit. Limit is " + limit);
+			return true;
+		}
 		return false;
 	}
 	
 	public void error(String message) {
-		lblResultLabel.setText("Error: " + message);
+		lblResultLabel.setText("<html>Error: " + message + "</html>");
 	}
 }

@@ -61,7 +61,7 @@ public class main {
 		
 		JLabel lblProblemLbl = new JLabel("Problems");
 		
-		JButton btnProblem1 = new JButton("Problem 1");
+		JButton btnProblem1 = new JButton("RGB7589");
 		btnProblem1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -69,7 +69,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem2 = new JButton("Problem 2");
+		JButton btnProblem2 = new JButton("RGB7607");
 		btnProblem2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -77,7 +77,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem3 = new JButton("Problem 3");
+		JButton btnProblem3 = new JButton("RGB7075");
 		btnProblem3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -85,7 +85,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem4 = new JButton("Problem 4");
+		JButton btnProblem4 = new JButton("RGB7406");
 		btnProblem4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -93,7 +93,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem5 = new JButton("problem 5");
+		JButton btnProblem5 = new JButton("RGB7318");
 		btnProblem5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -101,7 +101,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem6 = new JButton("problem 6");
+		JButton btnProblem6 = new JButton("RGB7345");
 		btnProblem6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -109,7 +109,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem7 = new JButton("problem 7");
+		JButton btnProblem7 = new JButton("RGB7556");
 		btnProblem7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -117,7 +117,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem8 = new JButton("problem 8");
+		JButton btnProblem8 = new JButton("RGB7603");
 		btnProblem8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -125,7 +125,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem9 = new JButton("problem 9");
+		JButton btnProblem9 = new JButton("RGB7312");
 		btnProblem9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -133,7 +133,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem10 = new JButton("problem 10");
+		JButton btnProblem10 = new JButton("RGB7032");
 		btnProblem10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -141,7 +141,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem11 = new JButton("problem 11");
+		JButton btnProblem11 = new JButton("RGB7521");
 		btnProblem11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -149,7 +149,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem12 = new JButton("problem 12");
+		JButton btnProblem12 = new JButton("RGB7600");
 		btnProblem12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -157,7 +157,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem17 = new JButton("problem 17");
+		JButton btnProblem17 = new JButton("RGB7170");
 		btnProblem17.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -165,7 +165,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem18 = new JButton("problem 18");
+		JButton btnProblem18 = new JButton("RGB7137");
 		btnProblem18.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -173,7 +173,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem19 = new JButton("problem 19");
+		JButton btnProblem19 = new JButton("RGB7316");
 		btnProblem19.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -181,7 +181,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem20 = new JButton("problem 20");
+		JButton btnProblem20 = new JButton("RGB7556");
 		btnProblem20.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -189,7 +189,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem13 = new JButton("problem 13");
+		JButton btnProblem13 = new JButton("RGB7507");
 		btnProblem13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -197,7 +197,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem14 = new JButton("problem 14");
+		JButton btnProblem14 = new JButton("RGB7237");
 		btnProblem14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -205,7 +205,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem15 = new JButton("problem 15");
+		JButton btnProblem15 = new JButton("RGB7172");
 		btnProblem15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -213,7 +213,7 @@ public class main {
 			}
 		});
 		
-		JButton btnProblem16 = new JButton("problem 16");
+		JButton btnProblem16 = new JButton("RGB7171");
 		btnProblem16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

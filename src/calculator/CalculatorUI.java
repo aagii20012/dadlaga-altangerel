@@ -39,6 +39,10 @@ public class CalculatorUI {
 	public String preInput = "";
 	public String lastOperation = "";
 	public boolean clickedEqual = false;
+	public boolean isClickedDot = false;
+	public boolean isFirstZero = true;
+	public boolean isResult = false;
+	
 	public Calculator calc = new Calculator();
 
 	/**
@@ -115,7 +119,7 @@ public class CalculatorUI {
 		JButton btnProcenteButton = new JButton("%");
 		btnProcenteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("%");
+				setOperation("%");
 			}
 		});
 		panel_2.add(btnProcenteButton);
@@ -131,8 +135,7 @@ public class CalculatorUI {
 		JButton btnNumber7Button = new JButton("7");
 		btnNumber7Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "7";
-				setInputNumber("number");
+				setNumber("7");
 			}
 		});
 		panel_2.add(btnNumber7Button);
@@ -140,8 +143,7 @@ public class CalculatorUI {
 		JButton btnNumber4Button = new JButton("4");
 		btnNumber4Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "4";
-				setInputNumber("number");
+				setNumber("4");
 			}
 		});
 		panel_2.add(btnNumber4Button);
@@ -149,8 +151,7 @@ public class CalculatorUI {
 		JButton btnNumber1Button = new JButton("1");
 		btnNumber1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "1";
-				setInputNumber("number");
+				setNumber("1");
 			}
 		});
 		panel_2.add(btnNumber1Button);
@@ -186,8 +187,7 @@ public class CalculatorUI {
 		JButton btnNumber8Button = new JButton("8");
 		btnNumber8Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "8";
-				setInputNumber("number");
+				setNumber("8");
 			}
 		});
 		panel_2_1.add(btnNumber8Button);
@@ -195,8 +195,7 @@ public class CalculatorUI {
 		JButton btnNumber5Button = new JButton("5");
 		btnNumber5Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "5";
-				setInputNumber("number");
+				setNumber("5");
 			}
 		});
 		panel_2_1.add(btnNumber5Button);
@@ -204,8 +203,7 @@ public class CalculatorUI {
 		JButton btnNumber2Button = new JButton("2");
 		btnNumber2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "2";
-				setInputNumber("number");
+				setNumber("2");
 			}
 		});
 		panel_2_1.add(btnNumber2Button);
@@ -213,8 +211,12 @@ public class CalculatorUI {
 		JButton btnNumber0Button = new JButton("0");
 		btnNumber0Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "0";
-				setInputNumber("number");
+				String str = currentInput + "0";
+				double checkValue = Double.parseDouble(str);
+				if (checkValue > 0 || isFirstZero || isClickedDot) {
+					isFirstZero = false;
+					setNumber("0");
+				}
 			}
 		});
 		panel_2_1.add(btnNumber0Button);
@@ -242,8 +244,7 @@ public class CalculatorUI {
 		JButton btnNumber9Button = new JButton("9");
 		btnNumber9Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "9";
-				setInputNumber("number");
+				setNumber("9");
 			}
 		});
 		panel_2_2.add(btnNumber9Button);
@@ -251,8 +252,7 @@ public class CalculatorUI {
 		JButton btnNumber6Button = new JButton("6");
 		btnNumber6Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "6";
-				setInputNumber("number");
+				setNumber("6");
 			}
 		});
 		panel_2_2.add(btnNumber6Button);
@@ -260,8 +260,7 @@ public class CalculatorUI {
 		JButton btnNumber3Button = new JButton("3");
 		btnNumber3Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += "3";
-				setInputNumber("number");
+				setNumber("3");
 			}
 		});
 		panel_2_2.add(btnNumber3Button);
@@ -269,8 +268,17 @@ public class CalculatorUI {
 		JButton btnDotButton = new JButton(".");
 		btnDotButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentInput += ".";
-				setInputNumber(".");
+				if ( !isClickedDot) {
+					if(currentInput.chars().filter(ch -> ch == '.').count() == 1)
+						return;
+					if(currentInput.isEmpty())
+						currentInput += "0.";
+					else
+						currentInput += ".";
+					setOperation(".");
+					isClickedDot = true;
+					isFirstZero = true;
+				}
 			}
 		});
 		panel_2_2.add(btnDotButton);
@@ -290,7 +298,7 @@ public class CalculatorUI {
 		JButton btnDivButton = new JButton("/");
 		btnDivButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("/");
+				setOperation("/");
 			}
 		});
 		panel_2_1_1.add(btnDivButton);
@@ -298,7 +306,7 @@ public class CalculatorUI {
 		JButton btnMultButton = new JButton("x");
 		btnMultButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("*");
+				setOperation("*");
 			}
 		});
 		panel_2_1_1.add(btnMultButton);
@@ -306,7 +314,7 @@ public class CalculatorUI {
 		JButton btnMinusButton = new JButton("-");
 		btnMinusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("-");
+				setOperation("-");
 			}
 		});
 		panel_2_1_1.add(btnMinusButton);
@@ -314,7 +322,7 @@ public class CalculatorUI {
 		JButton btnAddButton = new JButton("+");
 		btnAddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("+");
+				setOperation("+");
 			}
 		});
 		panel_2_1_1.add(btnAddButton);
@@ -322,7 +330,7 @@ public class CalculatorUI {
 		JButton btnResultButton = new JButton("=");
 		btnResultButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setInputNumber("=");
+				setOperation("=");
 			}
 		});
 		panel_2_1_1.add(btnResultButton);
@@ -352,10 +360,14 @@ public class CalculatorUI {
 	
 	protected void clear() {
 		currentInput = "";
+		isClickedDot = false;
+		isFirstZero = true;
 		currentNumber.setText("");
 	}
 
 	protected void reset() {
+		isClickedDot = false;
+		isFirstZero = true;
 		currentInput = "";
 		preInput = "";
 		lastOperation = "";
@@ -395,51 +407,73 @@ public class CalculatorUI {
 			return true;
 		return false;
 	}
-
-	protected void setInputNumber(String operation) {
-		if(operation == "number") 
+	
+	protected void setNumber(String number) {
+		if(currentInput.equals("0"))
+		{
+			currentInput = number;
 			currentNumber.setText(currentInput);
+			return;
+		}
+		if(!isResult) {
+			currentInput += number;
+			currentNumber.setText(currentInput);
+		}
 		else {
-			if(operation == "=")
-			{
-				String resultOfCalc = "";
-				if(isLastOpSingle()) {
-					singleValueCalc(lastOperation);
-					return;
-				}
-				
-				double left = 0, rigth = 0, result;
-				try {
-					left = Double.parseDouble(preInput);
-					rigth = Double.parseDouble(currentInput);
-					clickedEqual = true;
-				}
-				catch(Exception e) {
-					previesNumber.setText(currentInput + "=");
-					return;
-				}
-				result = calc.makeCalculationOnTwo(left, rigth, lastOperation);
-				if( result % 1 == 0 )
-					resultOfCalc += (int) result;
-				else
-					resultOfCalc += Double.toString(result);
-				currentInput = resultOfCalc;
-				currentNumber.setText(currentInput);
-				previesNumber.setText("");
-				return;
-			}
-			else if(operation == ".")
-			{
-				currentNumber.setText(currentInput);
-			}
-			else 
-			{
-				previesNumber.setText(currentInput + operation);
-				preInput = currentInput;
-				lastOperation = operation;
-				currentInput = "";
-			}
+			isResult = false;
+			reset();
+			setNumber(number);
 		}
 	}
-	
+
+	protected void setOperation(String operation) {
+		if(operation == "=")
+		{
+			String resultOfCalc = "";
+			if(isLastOpSingle()) {
+				singleValueCalc(lastOperation);
+				return;
+			}
+			
+			double left = 0, rigth = 0, result;
+			try {
+				left = Double.parseDouble(preInput);
+				rigth = Double.parseDouble(currentInput);
+				clickedEqual = true;
+			}
+			catch(Exception e) {
+				previesNumber.setText(currentInput + "=");
+				return;
+			}
+			result = calc.makeCalculationOnTwo(left, rigth, lastOperation);
+			if( result % 1 == 0 )
+				resultOfCalc += (int) result;
+			else
+				resultOfCalc += Double.toString(result);
+			isClickedDot = false;
+			isFirstZero = true;
+			currentInput = resultOfCalc;
+			if( currentInput.contains("Infinity"))
+			{
+				reset();
+				currentNumber.setText("Cannot divide by zero");
+			}else
+				currentNumber.setText(currentInput);
+			previesNumber.setText("");
+			isResult = true;
+			return;
+		}
+		else if(operation == ".")
+		{
+			currentNumber.setText(currentInput);
+		}
+		else 
+		{
+			isResult = false;
+			previesNumber.setText(currentInput + operation);
+			preInput = currentInput;
+			lastOperation = operation;
+			currentInput = "";
+		}
+	}
 }
