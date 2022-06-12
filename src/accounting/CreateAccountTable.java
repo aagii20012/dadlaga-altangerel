@@ -6,9 +6,12 @@ import java.sql.Statement;
 public class CreateAccountTable{
 	public String createAccountQuery = "CREATE TABLE IF NOT EXISTS Account("
 			+ "	id serial PRIMARY KEY,"
-			+ "	amount DOUBLE precision  DEFAULT 0,"
+			+ " amount DOUBLE precision  DEFAULT 0,"
 			+ "	type VARCHAR(50) NOT NULL,"
-			+ "	created_date date DEFAULT (CURRENT_DATE) );";
+			+ "	created_date date DEFAULT (CURRENT_DATE),"
+			+ "	user_id int,"
+			+ "	CONSTRAINT  FK_UserId "
+			+ "	FOREIGN KEY (user_id) REFERENCES Users(user_id));";
 
 	public String execute(Connection conn) {
 		// TODO Auto-generated method stub

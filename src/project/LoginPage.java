@@ -116,7 +116,9 @@ public class LoginPage {
 				}
 				conn.close();
 				frame.dispose();
-				Summary.main(null);
+				Summary summary = new Summary();
+				summary.passUser(user);
+				summary.main(null);
 			}
 		});
 		

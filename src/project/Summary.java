@@ -31,6 +31,8 @@ import accounting.Accounting;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import net.miginfocom.swing.MigLayout;
+import user.User;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +50,7 @@ public class Summary {
 	private static JTable table;
 	static DbConnection conn = new DbConnection();
 	static Accounting accounting = new Accounting();
+	private static User user;
 	/**
 	 * Launch the application.
 	 */
@@ -55,6 +58,10 @@ public class Summary {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					if(user == null) {
+						LoginPage.main(null);
+						return;
+					}
 					Summary window = new Summary();
 					getAllRecords();
 					window.frame.setVisible(true);
@@ -108,7 +115,7 @@ public class Summary {
 				Account acc = new Account(amount, type);
 				conn.connect();
 				
-				accounting.createRecord(conn.dbConnection, acc);
+				accounting.createRecord(conn.dbConnection, acc, user);
 				
 				conn.close();
 				getAllRecords();
@@ -160,13 +167,24 @@ public class Summary {
 		});
 		btnDeleteButton.setBounds(617, 11, 89, 39);
 		frame.getContentPane().add(btnDeleteButton);
+		
+		JButton btnNewButton_1 = new JButton("Log out");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				user = null;
+				frame.dispose();
+				LoginPage.main(null);
+			}
+		});
+		btnNewButton_1.setBounds(538, 68, 168, 39);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 	
 	public static void getAllRecords() {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 		conn.connect();
-		List<Account> acc = accounting.getAllRecord(conn.dbConnection);
+		List<Account> acc = accounting.getAllRecord(conn.dbConnection, user);
 		int index = 1;
 		for (Account s : acc) {
 			  Object[] row = { s.getId(), s.getAmount(), s.getType(), s.getDate()};
@@ -174,5 +192,9 @@ public class Summary {
 			  model.addRow(row);
 		}
 		conn.close();
+	}
+	
+	public void passUser(User user) {
+		this.user = user;
 	}
 }

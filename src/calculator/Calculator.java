@@ -7,6 +7,7 @@ public class Calculator {
 	private Map<String, OperationOnTwoNumber> operationMapOnTwo = new HashMap<>();
 	private Map<String, OperationOnOneNumber> operationMapOnOne = new HashMap<>();
 	
+	//Энд тооны машины үйлдлийг тохирох тэмдгийн хамт хадгална
 	public Calculator() {
 		operationMapOnTwo.put("+", new Addition());
 		operationMapOnTwo.put("-", new Subtraction());
@@ -20,6 +21,7 @@ public class Calculator {
 		operationMapOnOne.put("1/x", new DevideOne());
     }
 	
+	//Энд 2 тооны хоорондын үйлдлийг тохирох тэмдэгийн дагуу хийж үр дүнг буцаана
 	public double makeCalculationOnTwo(double number1, double number2, String operation) {
         OperationOnTwoNumber operationMapValueTwo = null;
         if (operationMapOnTwo.containsKey(operation)) {
@@ -31,6 +33,7 @@ public class Calculator {
         return operationMapValueTwo.calculateResult(number1, number2);
     }
 	
+	//Энд 1 тоон дээрх үйлдлийг тохирох тэмдэгийн дагуу хийж үр дүнг буцаана
 	public double makeCalculationOnOne(double number1, String operation) {
         OperationOnOneNumber operationMapValueOne = null;
         if(operationMapOnOne.containsKey(operation)) {

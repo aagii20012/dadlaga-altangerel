@@ -15,12 +15,13 @@ import user.User;
 public class Accounting implements CRUDQuery {
 
 	@Override
-	public List<Account> getAllRecord(Connection conn) {
+	public List<Account> getAllRecord(Connection conn, User user) {
 		List<Account> accounts = new ArrayList<>();
-		String query = "SELECT * FROM Account order by id asc";
+		String query = "SELECT * FROM Account Where user_id = ?  order by id asc";
 		try {
-			Statement statement = conn.createStatement();
-			ResultSet rs = statement.executeQuery(query);
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setInt(1, user.getId());;
+			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				int id = rs.getInt("id");
 				double amount = rs.getDouble("amount");
@@ -80,13 +81,14 @@ public class Accounting implements CRUDQuery {
 	}
 
 	@Override
-	public void createRecord(Connection conn, Account account) {
+	public void createRecord(Connection conn, Account account, User user) {
 		try {
-			String insertRescord = " Insert into Account (amount, type)"
-				    + " values (?, ?)";
+			String insertRescord = " Insert into Account (amount, type, user_id)"
+				    + " values (?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(insertRescord);
 			statement.setDouble(1, account.getAmount());
 			statement.setString (2, account.getType());
+			statement.setInt(3, user.getId());
 			statement.execute();
 			
 		} catch (SQLException e) {
