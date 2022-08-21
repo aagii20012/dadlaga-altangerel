@@ -262,7 +262,7 @@ public class Summary {
 		double total_cost = accounting.getTotalCost(conn.dbConnection, user.getId());;
 		double total_icome = accounting.getTotalIcome(conn.dbConnection, user.getId());;
 		
-		total = total_cost + total_icome;
+		total = total_icome - total_cost;
 		
 		lblTotalIcome.setText(String.valueOf(total_icome));
 		lblTotalCost.setText(String.valueOf(total_cost));
