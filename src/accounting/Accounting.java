@@ -40,12 +40,6 @@ public class Accounting implements CRUDQuery {
 	}
 
 	@Override
-	public Account getRecord(Connection conn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int updateRecord(Connection conn, Account account) {
 		try {
 			String insertRescord = "update account set amount = ?, type = ? where id = ?";
@@ -95,6 +89,47 @@ public class Accounting implements CRUDQuery {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public double getTotalCost(Connection conn, int user_id) {
+		try {
+			double total = 0;
+			String insertRescord = "SELECT Sum(amount) as total_cost FROM public.account where type='Cost' and user_id = ?;";
+			PreparedStatement statement = conn.prepareStatement(insertRescord);
+			statement.setDouble(1, user_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				total = rs.getDouble("total_cost");
+			}
+			return total;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public double getTotalIcome(Connection conn, int user_id) {
+		// TODO Auto-generated method stub
+		try {
+			double total = 0;
+			String insertRescord = "SELECT Sum(amount) as total_income FROM public.account where type='Income' and user_id = ?;";
+			PreparedStatement statement = conn.prepareStatement(insertRescord);
+			statement.setDouble(1, user_id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				total = rs.getDouble("total_income");
+			}
+			return total;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

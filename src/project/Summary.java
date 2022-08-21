@@ -42,12 +42,16 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
+import javax.swing.JSplitPane;
 
 public class Summary {
 
 	private JFrame frame;
 	private JTextField numberField;
 	private static JTable table;
+	private static JLabel lblTotalIcome;
+	private static JLabel lblTotalCost;
+	private static JLabel lblTotal;
 	static DbConnection conn = new DbConnection();
 	static Accounting accounting = new Accounting();
 	private static User user;
@@ -64,6 +68,7 @@ public class Summary {
 					}
 					Summary window = new Summary();
 					getAllRecords();
+					assagnTotals();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -103,7 +108,7 @@ public class Summary {
 		numberField.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Income", "Outcome"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Income", "Cost"}));
 		panel.add(comboBox, "flowx,cell 2 0,grow");
 		
 		JButton btnNewButton = new JButton("Add ");
@@ -118,7 +123,7 @@ public class Summary {
 				accounting.createRecord(conn.dbConnection, acc, user);
 				
 				conn.close();
-				getAllRecords();
+				refesh();
 			}
 		});
 		panel.add(btnNewButton, "cell 2 0,grow");
@@ -178,6 +183,61 @@ public class Summary {
 		});
 		btnNewButton_1.setBounds(538, 68, 168, 39);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(538, 118, 168, 152);
+		frame.getContentPane().add(panel_1);
+		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel_1.setLayout(gbl_panel_1);
+		
+		JLabel lblNewLabel = new JLabel("Total Icome:");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		panel_1.add(lblNewLabel, gbc_lblNewLabel);
+		
+		lblTotalIcome = new JLabel("");
+		GridBagConstraints gbc_lblTotalIcome = new GridBagConstraints();
+		gbc_lblTotalIcome.insets = new Insets(0, 0, 5, 0);
+		gbc_lblTotalIcome.gridx = 1;
+		gbc_lblTotalIcome.gridy = 0;
+		panel_1.add(lblTotalIcome, gbc_lblTotalIcome);
+		
+		JLabel lblNewLabel_2 = new JLabel("Total cost:");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 1;
+		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		lblTotalCost = new JLabel("12321");
+		GridBagConstraints gbc_lblTotalCost = new GridBagConstraints();
+		gbc_lblTotalCost.insets = new Insets(0, 0, 5, 0);
+		gbc_lblTotalCost.gridx = 1;
+		gbc_lblTotalCost.gridy = 1;
+		panel_1.add(lblTotalCost, gbc_lblTotalCost);
+		
+		JLabel lblNewLabel_3 = new JLabel("Total");
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_3.gridx = 0;
+		gbc_lblNewLabel_3.gridy = 2;
+		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
+		
+		lblTotal = new JLabel("");
+		GridBagConstraints gbc_lblTotal = new GridBagConstraints();
+		gbc_lblTotal.insets = new Insets(0, 0, 5, 0);
+		gbc_lblTotal.gridx = 1;
+		gbc_lblTotal.gridy = 2;
+		panel_1.add(lblTotal, gbc_lblTotal);
 	}
 	
 	public static void getAllRecords() {
@@ -187,11 +247,33 @@ public class Summary {
 		List<Account> acc = accounting.getAllRecord(conn.dbConnection, user);
 		int index = 1;
 		for (Account s : acc) {
-			  Object[] row = { s.getId(), s.getAmount(), s.getType(), s.getDate()};
+			  Object[] row = { index, s.getAmount(), s.getType(), s.getDate()};
 			  model = (DefaultTableModel) table.getModel();
 			  model.addRow(row);
+			  index++;
 		}
 		conn.close();
+	}
+	
+	public static void  assagnTotals() {
+		conn.connect();
+		List<Account> acc = accounting.getAllRecord(conn.dbConnection, user);
+		double total = 0;
+		double total_cost = accounting.getTotalCost(conn.dbConnection, user.getId());;
+		double total_icome = accounting.getTotalIcome(conn.dbConnection, user.getId());;
+		
+		total = total_cost + total_icome;
+		
+		lblTotalIcome.setText(String.valueOf(total_icome));
+		lblTotalCost.setText(String.valueOf(total_cost));
+		lblTotal.setText(String.valueOf(total));
+		
+		conn.close();
+	}
+	
+	public void refesh() {
+		assagnTotals();
+		getAllRecords();
 	}
 	
 	public void passUser(User user) {

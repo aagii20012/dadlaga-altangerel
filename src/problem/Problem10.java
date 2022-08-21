@@ -3,6 +3,7 @@ package problem;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -85,8 +86,8 @@ public class Problem10 {
 				len = (int) circleSpinner.getValue();
 				
 				result = solver(len);
-				
-				lblResultLabel.setText("Result: "+result);
+				DecimalFormat df = new DecimalFormat("#.###");
+				lblResultLabel.setText("Result: "+df.format(result));
 			}
 		});
 		

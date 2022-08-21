@@ -61,7 +61,7 @@ public class Problem18 {
 			}
 		});
 		
-		String quest="Нэг мөрөнд 3 бүхэл тоо зайгаар тусгаарлагдан өгөгдөнө. ";
+		String quest=" Өгөгдсөн 3 тоог өсөхөөр эрэмбэл. <br>Нэг мөрөнд 3 бүхэл тоо зайгаар тусгаарлагдан өгөгдөнө. ";
 		
 		JLabel lblQuestLabel = new JLabel("<html>"+quest+"</html>");
 		
@@ -132,21 +132,21 @@ public class Problem18 {
 		frame.getContentPane().setLayout(groupLayout);
 	}
 
-	protected void solver(String massive) {
-		String[] separatedStrings = massive.split(" ");
-		String result = "";
-		
-		Arrays.sort(separatedStrings);
-		
-		for(String str :separatedStrings)
-			result += str + " ";
-		
-		setResult(result);
-	}
+protected void solver(String massive) {
+	String[] separatedStrings = massive.split(" ");
+	String result = "";
+	
+	Arrays.sort(separatedStrings);
+	
+	for(String str :separatedStrings)
+		result += str + " ";
+	
+	setResult(result);
+}
 
-	protected boolean checkIsBlank(String massive) {
-		return massive.isBlank();
-	}
+protected boolean checkIsBlank(String massive) {
+	return massive.isBlank();
+}
 	
 	protected void setResult(String result) {
 		lblResultLabel.setText("Result: " + result);

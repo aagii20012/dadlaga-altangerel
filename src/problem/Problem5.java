@@ -19,7 +19,14 @@ public class Problem5 {
 	private JFrame frame;
 	
 	public int solve(int n) {
-		String toStr="1"+n+"1";
+		String toStr = "";
+		if(n > 0)
+			toStr="1"+n+"1";
+		else 
+		{
+			n = -1 * n;
+			toStr="-1"+n+"1";
+		}
 		int converted;
 		
 		converted=Integer.parseInt(toStr);
@@ -72,7 +79,7 @@ public class Problem5 {
 		
 		JLabel lblQuestLabel = new JLabel("<html>"+quest+"</html>");
 		
-		JLabel lblNumberLabel = new JLabel("New label");
+		JLabel lblNumberLabel = new JLabel("Enter number");
 		
 		JSpinner nNumber = new JSpinner();
 		

@@ -29,15 +29,16 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class LoginPage {
 
 	private JFrame frame;
 	private JTextField emailField;
-	private JTextField passwordField;
 	private JLabel lblErrorLabel ;
 	DbConnection conn = new DbConnection();
 	UserSingInCheck validation = new UserSingInCheck();
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -78,7 +79,7 @@ public class LoginPage {
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[46px][226px][]", "[20px][20px][23px][][][]"));
+		panel.setLayout(new MigLayout("", "[46px][226px,grow][]", "[20px][20px][23px][][][]"));
 		
 		JLabel lblEmailLabel = new JLabel("Email");
 		panel.add(lblEmailLabel, "cell 0 1,alignx left,aligny center");
@@ -88,11 +89,7 @@ public class LoginPage {
 		emailField.setColumns(10);
 		
 		JLabel lblPasswordLabel = new JLabel("Password");
-		panel.add(lblPasswordLabel, "cell 0 2,alignx left,aligny center");
-		
-		passwordField = new JTextField();
-		panel.add(passwordField, "cell 1 2,growx,aligny top");
-		passwordField.setColumns(10);
+		panel.add(lblPasswordLabel, "cell 0 2,alignx trailing,aligny center");
 		
 		JButton btnLogInButton = new JButton("Log in");
 		btnLogInButton.addActionListener(new ActionListener() {
@@ -122,6 +119,9 @@ public class LoginPage {
 			}
 		});
 		
+		passwordField = new JPasswordField();
+		panel.add(passwordField, "cell 1 2,growx");
+		
 		lblErrorLabel = new JLabel(" ");
 		panel.add(lblErrorLabel, "cell 1 3");
 		panel.add(btnLogInButton, "cell 0 4 2 1,growx,aligny top");
@@ -142,7 +142,7 @@ public class LoginPage {
 			setError("Email must be entered");
 			return false;
 		}
-		if(patternMatches(email)) {
+		if(!patternMatches(email)) {
 			setError("PLease enter valid email");
 			return false;
 		}
@@ -158,11 +158,8 @@ public class LoginPage {
 	}
 
 	public static boolean patternMatches(String emailAddress) {
-		String regexPattern = "^(.+)@(\\S+)$";
-	    //return Pattern.compile(regexPattern)
-	    //  .matcher(emailAddress)
-	    //  .matches();
-		return false;
+		String  regexPattern = "^\\S+@\\S+$";
+	    return Pattern.matches(regexPattern, emailAddress);
 	}
 	
 	private void resetError() {

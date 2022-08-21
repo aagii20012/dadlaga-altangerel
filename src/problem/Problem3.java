@@ -77,7 +77,13 @@ public class Problem3 {
 				if(textCubeLvlField.getText().isBlank())
 					lblResultTable.setText("Error: You need to enter N number");
 				else {
-					int n= Integer.parseInt(textCubeLvlField.getText());
+					int n = 0;
+					try {
+						n= Integer.parseInt(textCubeLvlField.getText());
+					}catch(Exception E) {
+						lblResultTable.setText("Error: You need to enter only number");
+						return;
+					}
 					lblResultTable.setText("Result: "+solution(n));
 				}
 			}

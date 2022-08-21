@@ -149,7 +149,7 @@ public class Problem1 {
 				}
 				else 
 				{
-					lblResultLabel.setText("Result: "+solveProblem());
+					lblResultLabel.setText("Result: "+ solveProblem());
 					lblResultLabel.setBackground(Color.BLACK);
 				}
 			}

@@ -18,16 +18,17 @@ import net.miginfocom.swing.MigLayout;
 import user.User;
 import user.UserSignUp;
 import user.UserSingInCheck;
+import javax.swing.JPasswordField;
 
 public class SingUp {
 
 	private JFrame frame;
 	private JTextField emailField;
-	private JTextField passwordField;
 	private JLabel lblErrorLabel ;
 	DbConnection conn = new DbConnection();
 	UserSignUp createUser = new UserSignUp();
 	private JTextField usernameField;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -85,11 +86,7 @@ public class SingUp {
 		emailField.setColumns(10);
 		
 		JLabel lblPasswordLabel = new JLabel("Password");
-		panel.add(lblPasswordLabel, "cell 0 2,alignx left,aligny center");
-		
-		passwordField = new JTextField();
-		panel.add(passwordField, "cell 1 2,growx,aligny top");
-		passwordField.setColumns(10);
+		panel.add(lblPasswordLabel, "cell 0 2,alignx trailing,aligny center");
 		
 		JButton btnSingUpButton = new JButton("Sign Up");
 		btnSingUpButton.addActionListener(new ActionListener() {
@@ -111,10 +108,16 @@ public class SingUp {
 					setError("User not found");
 				}
 				
+				frame.dispose();
+				LoginPage.main(null);
+				
 				conn.close();
 				
 			}
 		});
+		
+		passwordField = new JPasswordField();
+		panel.add(passwordField, "cell 1 2,growx");
 		
 		lblErrorLabel = new JLabel(" ");
 		panel.add(lblErrorLabel, "cell 1 3");
@@ -140,7 +143,7 @@ public class SingUp {
 			setError("Email must be entered");
 			return false;
 		}
-		if(patternMatches(email)) {
+		if(!patternMatches(email)) {
 			setError("PLease enter valid email");
 			return false;
 		}
@@ -156,12 +159,8 @@ public class SingUp {
 	}
 
 	public static boolean patternMatches(String emailAddress) {
-		String regexPattern = "^(.+)@(\\S+)$";
-	    //return Pattern.compile(regexPattern)
-	    //  .matcher(emailAddress)
-	    //  .matches();
-		
-		return false;
+		String  regexPattern = "^\\S+@\\S+$";
+	    return Pattern.matches(regexPattern, emailAddress);
 	}
 	
 	private void resetError() {
