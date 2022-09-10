@@ -29,6 +29,8 @@ public class EditAccounting {
 	private JFrame frame;
 	private JTextField idField;
 	private JTextField ammountField;
+	private int id;
+	private double amount;
 	static DbConnection conn = new DbConnection();
 	static Accounting accounting = new Accounting();
 
@@ -39,7 +41,7 @@ public class EditAccounting {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditAccounting window = new EditAccounting();
+					EditAccounting window = new EditAccounting(args);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,8 +52,11 @@ public class EditAccounting {
 
 	/**
 	 * Create the application.
+	 * @param args 
 	 */
-	public EditAccounting() {
+	public EditAccounting(String[] args) {
+		this.id = Integer.parseInt(args[0]);
+		this.amount = Double.parseDouble(args[1]);
 		initialize();
 	}
 
@@ -84,6 +89,8 @@ public class EditAccounting {
 		idField = new JTextField();
 		panel.add(idField);
 		idField.setColumns(10);
+		idField.setText(""+id );
+		idField.setEditable(false);
 		
 		JLabel lblNewLabel_1 = new JLabel("Amount");
 		panel.add(lblNewLabel_1);
@@ -91,12 +98,13 @@ public class EditAccounting {
 		ammountField = new JTextField();
 		panel.add(ammountField);
 		ammountField.setColumns(10);
+		ammountField.setText(""+amount );
 		
 		JLabel lblNewLabel_2 = new JLabel("Type");
 		panel.add(lblNewLabel_2);
 		
 		JComboBox typeBox = new JComboBox();
-		typeBox.setModel(new DefaultComboBoxModel(new String[] {"Income", "Outcome"}));
+		typeBox.setModel(new DefaultComboBoxModel(new String[] {"Income", "Cost"}));
 		panel.add(typeBox);
 		
 		JLabel lblResultLabel = new JLabel(" ");
@@ -109,6 +117,9 @@ public class EditAccounting {
 				int id = Integer.parseInt(idField.getText());
 				double amount = Double.parseDouble(ammountField.getText());
 				String type =  (String) typeBox.getSelectedItem();
+				if(amount < 0) {
+					amount *= -1;
+				}
 				
 				Account acc = new Account(id, amount, type, null);
 				

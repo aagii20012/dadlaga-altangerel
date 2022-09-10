@@ -28,17 +28,18 @@ public class DeleteAccounting {
 
 	private JFrame frame;
 	private JTextField idField;
+	private int id;
 	static DbConnection conn = new DbConnection();
 	static Accounting accounting = new Accounting();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DeleteAccounting window = new DeleteAccounting();
+					DeleteAccounting window = new DeleteAccounting(args);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +51,8 @@ public class DeleteAccounting {
 	/**
 	 * Create the application.
 	 */
-	public DeleteAccounting() {
+	public DeleteAccounting(String args) {
+		this.id = Integer.parseInt(args);
 		initialize();
 	}
 
@@ -83,6 +85,8 @@ public class DeleteAccounting {
 		idField = new JTextField();
 		panel.add(idField);
 		idField.setColumns(10);
+		idField.setText(""+id );
+		idField.setEditable(false);
 		
 		JLabel lblResultLabel = new JLabel(" ");
 		lblResultLabel.setBounds(96, 191, 46, 14);
@@ -106,6 +110,5 @@ public class DeleteAccounting {
 		});
 		btnDeleteButton.setBounds(32, 134, 293, 23);
 		frame.getContentPane().add(btnDeleteButton);
-		
 	}
 }

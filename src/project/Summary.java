@@ -116,6 +116,10 @@ public class Summary {
 			public void actionPerformed(ActionEvent e) {
 				double amount = Double.parseDouble(numberField.getText());
 				String type = (String) comboBox.getSelectedItem();
+				if(amount < 0)
+				{
+					amount *=-1;
+				}
 				
 				Account acc = new Account(amount, type);
 				conn.connect();
@@ -157,7 +161,13 @@ public class Summary {
 		JButton btnEditButton = new JButton("edit");
 		btnEditButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EditAccounting.main(null);
+				int selectedRow = table.getSelectedRow();
+				if(selectedRow > 0) {
+					String id = table.getModel().getValueAt(selectedRow, 0).toString();
+					String Amount = table.getModel().getValueAt(selectedRow, 1).toString();
+					String[] data = {id, Amount};
+					EditAccounting.main(data);
+				}
 			}
 		});
 		
@@ -167,7 +177,11 @@ public class Summary {
 		JButton btnDeleteButton = new JButton("Delete");
 		btnDeleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DeleteAccounting.main(null);
+				int selectedRow = table.getSelectedRow();
+				if(selectedRow > 0) {
+					String id = table.getModel().getValueAt(selectedRow, 0).toString();
+					DeleteAccounting.main(id);
+				}
 			}
 		});
 		btnDeleteButton.setBounds(617, 11, 89, 39);
@@ -247,12 +261,13 @@ public class Summary {
 		List<Account> acc = accounting.getAllRecord(conn.dbConnection, user);
 		int index = 1;
 		for (Account s : acc) {
-			  Object[] row = { index, s.getAmount(), s.getType(), s.getDate()};
+			  Object[] row = { s.getId(), s.getAmount(), s.getType(), s.getDate()};
 			  model = (DefaultTableModel) table.getModel();
 			  model.addRow(row);
 			  index++;
 		}
 		conn.close();
+		assagnTotals();
 	}
 	
 	public static void  assagnTotals() {

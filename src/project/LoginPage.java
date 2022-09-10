@@ -87,6 +87,7 @@ public class LoginPage {
 		emailField = new JTextField();
 		panel.add(emailField, "cell 1 1,growx,aligny top");
 		emailField.setColumns(10);
+		emailField.setText("aagii@gmail.com");
 		
 		JLabel lblPasswordLabel = new JLabel("Password");
 		panel.add(lblPasswordLabel, "cell 0 2,alignx trailing,aligny center");
@@ -121,6 +122,7 @@ public class LoginPage {
 		
 		passwordField = new JPasswordField();
 		panel.add(passwordField, "cell 1 2,growx");
+		passwordField.setText("1111111");
 		
 		lblErrorLabel = new JLabel(" ");
 		panel.add(lblErrorLabel, "cell 1 3");
